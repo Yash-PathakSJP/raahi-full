@@ -1,0 +1,132 @@
+/* ============================================
+   RAAHI — Design Tokens
+   Palette derived from the brand reference:
+   violet → fuchsia primary gradient, deep
+   midnight navy for dark surfaces, soft
+   lavender-tinted neutrals for light surfaces.
+   ============================================ */
+
+:root {
+  /* Brand gradient */
+  --brand-violet: #7C3AED;
+  --brand-purple: #9333EA;
+  --brand-fuchsia: #C026D3;
+  --brand-pink: #EC4899;
+  --brand-gradient: linear-gradient(135deg, var(--brand-violet) 0%, var(--brand-fuchsia) 100%);
+  --brand-gradient-text: linear-gradient(135deg, #A855F7 0%, #EC4899 100%);
+
+  /* Accent */
+  --accent-amber: #F59E0B;
+  --accent-emerald: #10B981;
+  --accent-sky: #0EA5E9;
+
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(20, 10, 40, 0.06);
+  --shadow-md: 0 8px 24px rgba(76, 29, 149, 0.10);
+  --shadow-lg: 0 20px 48px rgba(76, 29, 149, 0.16);
+  --shadow-glow: 0 0 0 1px rgba(168, 85, 247, 0.15), 0 12px 32px rgba(168, 85, 247, 0.18);
+
+  /* Transitions */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 160ms var(--ease);
+  --t-med: 280ms var(--ease);
+  --t-slow: 500ms var(--ease);
+
+  /* Layout */
+  --container-w: 1240px;
+  --header-h: 76px;
+}
+
+/* ---------- LIGHT THEME (default) ---------- */
+:root,
+[data-theme='light'] {
+  --bg-page: #FFFFFF;
+  --bg-surface: #FFFFFF;
+  --bg-surface-alt: #F7F5FC;
+  --bg-surface-raised: #FFFFFF;
+  --bg-muted: #F2EFFA;
+  --bg-dark-section: #15102B;
+  --bg-dark-section-alt: #1B1538;
+
+  --text-primary: #16132B;
+  --text-secondary: #5B5570;
+  --text-tertiary: #8A84A0;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-muted: #B6AFD0;
+  --text-on-brand: #FFFFFF;
+
+  --border-subtle: #ECE8F7;
+  --border-default: #E1DCF2;
+  --border-strong: #CFC7E8;
+
+  --card-bg: #FFFFFF;
+  --card-border: #ECE8F7;
+
+  --input-bg: #FFFFFF;
+  --input-border: #E1DCF2;
+
+  --header-bg: rgba(255, 255, 255, 0.82);
+  --header-border: #ECE8F7;
+
+  --footer-bg: #15102B;
+  --footer-text: #B6AFD0;
+  --footer-border: rgba(255,255,255,0.08);
+
+  --star: #F59E0B;
+}
+
+.raahi-landing {
+  color-scheme: light;
+}
+
+/* ---------- DARK THEME ---------- */
+[data-theme='dark'] {
+  --bg-page: #0E0B1F;
+  --bg-surface: #15112A;
+  --bg-surface-alt: #181333;
+  --bg-surface-raised: #1D1838;
+  --bg-muted: #211B40;
+  --bg-dark-section: #0B0918;
+  --bg-dark-section-alt: #110D22;
+
+  --text-primary: #F3F1FA;
+  --text-secondary: #B6AFD0;
+  --text-tertiary: #8A82AC;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-muted: #B6AFD0;
+  --text-on-brand: #FFFFFF;
+
+  --border-subtle: #251F44;
+  --border-default: #2C2650;
+  --border-strong: #3A3266;
+
+  --card-bg: #181333;
+  --card-border: #2C2650;
+
+  --input-bg: #1D1838;
+  --input-border: #322B5C;
+
+  --header-bg: rgba(14, 11, 31, 0.82);
+  --header-border: #251F44;
+
+  --footer-bg: #0B0918;
+  --footer-text: #968FB5;
+  --footer-border: rgba(255,255,255,0.06);
+
+  --star: #FBBF24;
+}
+
+[data-theme='dark'] .raahi-landing {
+  color-scheme: dark;
+}

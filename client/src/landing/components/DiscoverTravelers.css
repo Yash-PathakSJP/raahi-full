@@ -1,0 +1,147 @@
+.discover-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.discover-list {
+  margin: 28px 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.discover-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.discover-check {
+  color: var(--brand-violet);
+  flex-shrink: 0;
+}
+
+.discover-stack {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 420px;
+}
+
+.traveler-card {
+  position: absolute;
+  width: 200px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--t-med);
+}
+
+.traveler-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.traveler-card:nth-child(1) {
+  transform: translateX(-128px) rotate(-7deg) scale(0.92);
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.traveler-card:nth-child(2) {
+  transform: translateY(-12px) scale(1.08);
+  z-index: 2;
+  width: 230px;
+}
+
+.traveler-card:nth-child(2) img {
+  height: 280px;
+}
+
+.traveler-card:nth-child(3) {
+  transform: translateX(128px) rotate(7deg) scale(0.92);
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.traveler-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  z-index: 3;
+}
+
+.traveler-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  background: var(--brand-gradient);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 10px rgba(168, 85, 247, 0.4);
+}
+
+.traveler-info {
+  padding: 12px 14px 14px;
+}
+
+.traveler-name {
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.traveler-location {
+  font-size: 12.5px;
+  color: var(--text-tertiary);
+  margin: 2px 0 8px;
+}
+
+.traveler-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.traveler-tag {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  background: var(--bg-muted);
+  color: var(--brand-violet);
+}
+
+[data-theme='dark'] .traveler-tag {
+  background: rgba(168, 85, 247, 0.16);
+  color: #D8B4FE;
+}
+
+@media (max-width: 920px) {
+  .discover-inner {
+    grid-template-columns: 1fr;
+    gap: 64px;
+  }
+  .discover-stack { order: -1; height: 340px; }
+}
+
+@media (max-width: 480px) {
+  .traveler-card { width: 150px; }
+  .traveler-card img { height: 180px; }
+  .traveler-card:nth-child(1) { transform: translateX(-78px) rotate(-7deg) scale(0.9); }
+  .traveler-card:nth-child(2) { width: 175px; }
+  .traveler-card:nth-child(2) img { height: 210px; }
+  .traveler-card:nth-child(3) { transform: translateX(78px) rotate(7deg) scale(0.9); }
+}
