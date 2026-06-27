@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Eye, EyeOff, Moon } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 import AuthSidePanel from '../components/AuthSidePanel';
@@ -58,12 +58,9 @@ export default function Login() {
           </div>
 
           <div className="rounded-2xl border border-raahi-border bg-raahi-card p-8 shadow-card-dark">
-            <div className="mb-6 flex items-start justify-between">
-              <div>
-                <h2 className="font-display text-2xl font-bold text-white">Login to Raahi</h2>
-                <p className="mt-1 text-sm text-gray-400">Glad to see you again! 👋</p>
-              </div>
-              <Moon className="h-9 w-9 rounded-full bg-white/5 p-2 text-gray-400" />
+            <div className="mb-6">
+               <h2 className="font-display text-2xl font-bold text-white">Login to Raahi</h2>
+               <p className="mt-1 text-sm text-gray-400">Glad to see you again! 👋</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>

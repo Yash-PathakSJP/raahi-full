@@ -14,7 +14,7 @@ export default function Hero() {
             AI Matching is here! Find your perfect travel buddy.
           </span>
 
-          <h1 className="hero-title">
+          <h1 className="hero-title" color='white'>
             Find Your People.
             <br />
             <span className="text-gradient">Explore the World.</span>

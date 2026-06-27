@@ -1,7 +1,33 @@
 .footer {
-  background: var(--footer-bg);
+  background: #15102B;
+  color: #B6AFD0;
   padding-top: 64px;
-  transition: background var(--t-med);
+}
+
+/* Footer always stays dark regardless of light/dark theme toggle */
+[data-theme='light'] .footer {
+  background: #15102B;
+  color: #B6AFD0;
+}
+
+[data-theme='light'] .footer a {
+  color: #B6AFD0;
+}
+
+[data-theme='light'] .footer p,
+[data-theme='light'] .footer h3,
+[data-theme='light'] .footer h4 {
+  color: #B6AFD0;
+}
+
+.footer a {
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.footer a:hover {
+  color: #fff;
 }
 
 .footer-top {
@@ -15,7 +41,7 @@
   color: #fff;
 }
 
-.footer-tagline {
+.raahi-landing .footer-tagline {
   margin-top: 18px;
   font-size: 14px;
   line-height: 1.6;
@@ -79,6 +105,11 @@
   font-size: 13px;
   color: var(--footer-text);
   flex-wrap: wrap;
+}
+
+.footer-bottom p {
+  color: var(--footer-text);
+  margin: 0;
 }
 
 .footer-heart {
