@@ -16,7 +16,6 @@ const errorHandler = require('./middleware/errorHandler');
 const { apiLimiter } = require('./middleware/rateLimiter');
 const { initSocket } = require('./sockets/chatSocket');
 
-// Routes
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const tripRoutes = require('./routes/tripRoutes');
@@ -29,53 +28,56 @@ connectDB();
 const app = express();
 const server = http.createServer(app);
 
+// ── CORS ──────────────────────────────────────────────────────────────────────
+// Allow localhost in dev AND the deployed Vercel frontend in production.
+// Add any extra origins comma-separated in the CLIENT_URL env var.
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  process.env.CLIENT_URL,
-].filter(Boolean);
+  'https://raahi-full.vercel.app',
+];
+
+// Also pull in whatever CLIENT_URL is set to on Render (handles custom domains)
+if (process.env.CLIENT_URL) {
+  process.env.CLIENT_URL.split(',').forEach((url) => {
+    const trimmed = url.trim();
+    if (trimmed && !allowedOrigins.includes(trimmed)) {
+      allowedOrigins.push(trimmed);
+    }
+  });
+}
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn(`CORS blocked origin: ${origin}`);
+      callback(new Error(`Origin ${origin} not allowed by CORS`));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
 const io = new Server(server, {
   cors: {
     origin: allowedOrigins,
     credentials: true,
+    methods: ['GET', 'POST'],
   },
 });
 
 app.set('io', io);
 app.set('trust proxy', 1);
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true,
-  })
-);
-
-const io = new Server(server, {
-  cors: {
-    origin: allowedOrigins,
-    credentials: true,
-  },
-});
-
-// Make io accessible in controllers if needed: req.app.get('io')
-app.set('io', io);
-
-// Security & parsing middleware
+// ── Middleware ─────────────────────────────────────────────────────────────────
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight for all routes
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
@@ -86,16 +88,19 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use('/api', apiLimiter);
-
-// Static folder for uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Health check
+// ── Health check ───────────────────────────────────────────────────────────────
 app.get('/api/health', (req, res) => {
-  res.status(200).json({ success: true, message: 'RAAHI API is running', timestamp: new Date() });
+  res.status(200).json({
+    success: true,
+    message: 'RAAHI API is running',
+    timestamp: new Date(),
+    allowedOrigins,
+  });
 });
 
-// API routes
+// ── API Routes ─────────────────────────────────────────────────────────────────
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/trips', tripRoutes);
@@ -103,36 +108,35 @@ app.use('/api/matches', matchRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api', publicRoutes);
 
-// 404 handler for unmatched API routes only (the SPA fallback below handles all other paths)
+// ── 404 for unmatched API routes ───────────────────────────────────────────────
 app.use('/api', (req, res) => {
   res.status(404).json({ success: false, message: `Route ${req.originalUrl} not found` });
 });
 
-// --- Serve the built React client in production ---------------------------
-// In dev, the Vite dev server (running separately on :5173) serves the client
-// and proxies /api + the socket connection to this server instead.
+// ── Serve built React client in production ────────────────────────────────────
 if (process.env.NODE_ENV === 'production') {
   const clientDist = path.join(__dirname, '..', 'client', 'dist');
   app.use(express.static(clientDist));
-
   app.get('*', (req, res) => {
     res.sendFile(path.join(clientDist, 'index.html'));
   });
 }
 
-// Global error handler (must be last)
+// ── Global error handler ───────────────────────────────────────────────────────
 app.use(errorHandler);
 
-// Initialize Socket.io
+// ── Socket.io ──────────────────────────────────────────────────────────────────
 initSocket(io);
 
+// ── Start server ───────────────────────────────────────────────────────────────
 const PORT = process.env.PORT || 5000;
-
 server.listen(PORT, () => {
-  console.log(`RAAHI server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+  console.log(
+    `RAAHI server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`
+  );
+  console.log(`Allowed origins: ${allowedOrigins.join(', ')}`);
 });
 
-// Handle unhandled promise rejections gracefully
 process.on('unhandledRejection', (err) => {
   console.error(`Unhandled Rejection: ${err.message}`);
   server.close(() => process.exit(1));
