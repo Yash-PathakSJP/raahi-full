@@ -147,6 +147,10 @@ exports.login = asyncHandler(async (req, res, next) => {
   user.lastActive = Date.now();
   await user.save({ validateBeforeSave: false });
 
+  // Silently create a welcome trip for brand new users
+const { createWelcomeTripIfNew } = require('../utils/welcomeTrip');
+await createWelcomeTripIfNew(user._id);
+
   sendTokenResponse(user, 200, res, 'Logged in successfully');
 });
 
