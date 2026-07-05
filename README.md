@@ -89,8 +89,8 @@ npm run seed
 ```
 After seeding, log in with:
 ```
-Email: hello.yash@mail.com
-Password: Password123
+Email: test@gmail.com
+Password: test12345
 ```
 
 ### 4. Run the app
