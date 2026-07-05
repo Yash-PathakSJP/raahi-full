@@ -37,6 +37,17 @@ const allowedOrigins = [
   'https://raahi-full.vercel.app',
 ];
 
+// Allow all Vercel preview deployments for this project
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+  if (allowedOrigins.includes(origin)) return true;
+  // Allow all preview URLs for this Vercel project
+  if (origin.endsWith('.vercel.app')) return true;
+  // Allow CLIENT_URL from env
+  if (process.env.CLIENT_URL && origin === process.env.CLIENT_URL.trim()) return true;
+  return false;
+};
+
 // Also pull in whatever CLIENT_URL is set to on Render (handles custom domains)
 if (process.env.CLIENT_URL) {
   process.env.CLIENT_URL.split(',').forEach((url) => {
@@ -49,9 +60,7 @@ if (process.env.CLIENT_URL) {
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (mobile apps, curl, Postman)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
+    if (isAllowedOrigin(origin)) {
       callback(null, true);
     } else {
       console.warn(`CORS blocked origin: ${origin}`);
@@ -65,7 +74,13 @@ const corsOptions = {
 
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      if (isAllowedOrigin(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
     methods: ['GET', 'POST'],
   },
