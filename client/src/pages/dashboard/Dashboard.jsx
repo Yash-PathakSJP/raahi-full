@@ -188,7 +188,7 @@ export default function Dashboard() {
                 {!item.done && (
                   <Link
                     to={item.link}
-                    className="btn-primary shrink-0 text-xs py-2 px-3"
+                    className="btn-primary shrink-0 text-xs"
                   >
                     {item.cta}
                   </Link>
@@ -216,7 +216,7 @@ export default function Dashboard() {
               </Link>
               <Link
                 to="/trips/new"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20 transition"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <Map className="h-4 w-4" /> Plan a Trip
               </Link>
@@ -357,7 +357,7 @@ export default function Dashboard() {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <button
-                  className="absolute right-2 top-2 rounded-full bg-white/20 p-1.5 backdrop-blur hover:bg-white/30"
+                  className="absolute right-2 top-2 rounded-lg bg-white/20 p-1.5 backdrop-blur hover:bg-white/30"
                   aria-label="Save destination"
                 >
                   <Heart className="h-4 w-4 text-white" />

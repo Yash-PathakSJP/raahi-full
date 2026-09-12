@@ -43,6 +43,8 @@ export default function Features() {
             src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=420&fit=crop"
             alt="Two travelers with backpacks looking out over a mountain valley at golden hour"
             loading="lazy"
+            style={{ aspectRatio: '10 / 3', objectFit: 'cover' }}
+            onError={(e) => e.target.src = 'https://placehold.co/400x400?text=RAAHI'}
           />
           <div className="features-banner-overlay" />
         </div>

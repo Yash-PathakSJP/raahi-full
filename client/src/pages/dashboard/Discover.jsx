@@ -77,7 +77,7 @@ export default function Discover() {
               setActiveFilter(f);
               setPage(1);
             }}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+            className={`rounded-lg px-4 py-1.5 text-sm font-medium transition ${
               activeFilter === f
                 ? 'bg-brand-gradient text-white'
                 : 'bg-white text-gray-600 hover:bg-gray-100'
@@ -113,7 +113,7 @@ export default function Discover() {
                 </span>
                 <button
                   onClick={(e) => handleLike(e, t._id)}
-                  className="absolute right-3 top-3 rounded-full bg-white/90 p-2 transition hover:bg-white"
+                  className="absolute right-3 top-3 rounded-lg bg-white/90 p-2 transition hover:bg-white"
                   aria-label="Like traveler"
                 >
                   <Heart

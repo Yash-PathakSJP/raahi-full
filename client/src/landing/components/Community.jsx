@@ -11,6 +11,8 @@ export default function Community() {
           src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=1600&h=700&fit=crop"
           alt="A group of friends cheering with arms raised at a mountain viewpoint"
           loading="lazy"
+          style={{ aspectRatio: '16 / 7', objectFit: 'cover' }}
+          onError={(e) => e.target.src = 'https://placehold.co/400x400?text=RAAHI'}
         />
         <div className="community-overlay" />
       </div>

@@ -38,7 +38,13 @@ export default function DiscoverTravelers() {
               style={{ '--i': i }}
             >
               {traveler.badge && <span className="traveler-badge">{traveler.badge}</span>}
-              <img src={traveler.image} alt={`${traveler.name}, ${traveler.age}, ${traveler.location}`} loading="lazy" />
+              <img
+                src={traveler.image}
+                alt={`${traveler.name}, ${traveler.age}, ${traveler.location}`}
+                loading="lazy"
+                style={{ aspectRatio: '3 / 4', objectFit: 'cover' }}
+                onError={(e) => e.target.src = 'https://placehold.co/400x400?text=RAAHI'}
+              />
               <div className="traveler-info">
                 <p className="traveler-name">{traveler.name}, {traveler.age}</p>
                 <p className="traveler-location">{traveler.location}</p>

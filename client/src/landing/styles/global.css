@@ -152,7 +152,7 @@ body,
 
 .raahi-landing .section-title {
   font-size: clamp(28px, 3.4vw, 40px);
-  font-weight: 800;
+  font-weight: 700;
   margin-top: 14px;
 }
 
@@ -179,7 +179,7 @@ body,
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 15px;
-  padding: 13px 26px;
+  padding: 0.75rem 1.5rem;
   border-radius: var(--radius-full);
   border: 1px solid transparent;
   transition: transform var(--t-fast), box-shadow var(--t-fast), background var(--t-fast), border-color var(--t-fast), color var(--t-fast);
@@ -224,7 +224,7 @@ body,
 }
 
 .raahi-landing .btn-sm {
-  padding: 9px 18px;
+  padding: 0.5rem 1rem;
   font-size: 13px;
 }
 
@@ -249,4 +249,10 @@ body,
 .raahi-landing .btn:not(:disabled):active {
   transform: scale(0.98);
   opacity: 0.92;
+}
+
+.raahi-landing button:disabled,
+.raahi-landing .btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.5;
 }

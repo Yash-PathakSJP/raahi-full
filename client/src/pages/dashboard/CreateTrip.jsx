@@ -132,7 +132,7 @@ export default function CreateTrip() {
                   key={type}
                   type="button"
                   onClick={() => update('tripType', type)}
-                  className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+                  className={`rounded-lg px-4 py-1.5 text-sm font-medium transition ${
                     form.tripType === type
                       ? 'bg-brand-gradient text-white'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'

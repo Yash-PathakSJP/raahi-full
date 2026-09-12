@@ -15,7 +15,7 @@
   border: 1px solid var(--border-default);
   display: flex;
   align-items: center;
-  padding: 3px;
+  padding: 0.1875rem;
   transition: background var(--t-med), border-color var(--t-med);
 }
 

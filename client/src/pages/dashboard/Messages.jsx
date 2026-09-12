@@ -214,8 +214,8 @@ export default function Messages() {
                 </div>
               </div>
               <div className="flex gap-1 text-gray-400">
-                <button className="rounded-lg p-2 hover:bg-gray-100" aria-label="Voice call"><Phone className="h-4 w-4" /></button>
-                <button className="rounded-lg p-2 hover:bg-gray-100" aria-label="Video call"><Video className="h-4 w-4" /></button>
+                <button className="rounded-lg p-2 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50" aria-label="Voice call"><Phone className="h-4 w-4" /></button>
+                <button className="rounded-lg p-2 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50" aria-label="Video call"><Video className="h-4 w-4" /></button>
               </div>
             </div>
 
@@ -243,7 +243,7 @@ export default function Messages() {
             </div>
 
             <form onSubmit={handleSend} className="flex items-center gap-2 border-t border-gray-100 p-3">
-              <button type="button" className="rounded-lg p-2 text-gray-400 hover:bg-gray-100" aria-label="Attach file">
+              <button type="button" className="rounded-lg p-2 text-gray-400 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50" aria-label="Attach file">
                 <Paperclip className="h-4 w-4" />
               </button>
               <input
@@ -252,13 +252,13 @@ export default function Messages() {
                 placeholder="Type a message..."
                 className="flex-1 rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm outline-none focus:border-brand-500"
               />
-              <button type="button" className="rounded-lg p-2 text-gray-400 hover:bg-gray-100" aria-label="Add emoji">
+              <button type="button" className="rounded-lg p-2 text-gray-400 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50" aria-label="Add emoji">
                 <Smile className="h-4 w-4" />
               </button>
               <button
                 type="submit"
                 disabled={!connected || !text.trim()}
-                className="rounded-xl bg-brand-gradient p-2.5 text-white disabled:opacity-50"
+                className="rounded-xl bg-brand-gradient p-2.5 text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label="Send message"
               >
                 <Send className="h-4 w-4" />

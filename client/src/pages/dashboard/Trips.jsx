@@ -43,7 +43,7 @@ export default function Trips() {
             <button
               key={t}
               onClick={() => setTab(t)}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+              className={`rounded-lg px-4 py-1.5 text-sm font-medium transition ${
                 tab === t ? 'bg-brand-gradient text-white' : 'bg-white text-gray-600 hover:bg-gray-100'
               }`}
             >

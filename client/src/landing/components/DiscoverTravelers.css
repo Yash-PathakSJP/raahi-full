@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 15px;
+  font-size: var(--fs-sm);
   color: var(--text-primary);
   font-weight: 500;
 }
@@ -85,26 +85,26 @@
   z-index: 2;
   background: var(--brand-gradient);
   color: #fff;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 0.25rem 0.625rem;
   border-radius: var(--radius-full);
   box-shadow: 0 4px 10px rgba(168, 85, 247, 0.4);
 }
 
 .traveler-info {
-  padding: 12px 14px 14px;
+  padding: 0.75rem 0.875rem 0.875rem;
 }
 
 .traveler-name {
   font-weight: 700;
-  font-size: 14.5px;
+  font-size: var(--fs-sm);
   color: var(--text-primary);
   margin: 0;
 }
 
 .traveler-location {
-  font-size: 12.5px;
+  font-size: var(--fs-xs);
   color: var(--text-tertiary);
   margin: 2px 0 8px;
 }
@@ -116,9 +116,9 @@
 }
 
 .traveler-tag {
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  padding: 3px 9px;
+  padding: 0.1875rem 0.5625rem;
   border-radius: var(--radius-full);
   background: var(--bg-muted);
   color: var(--brand-violet);

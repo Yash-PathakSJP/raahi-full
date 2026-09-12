@@ -35,7 +35,13 @@ export default function CompatibilityShowcase() {
           <div className="match-card">
             <div className="match-people">
               <div className="match-person">
-                <img src={personA.image} alt={personA.name} />
+                <img
+                  src={personA.image}
+                  alt={personA.name}
+                  loading="lazy"
+                  style={{ aspectRatio: '1 / 1', objectFit: 'cover' }}
+                  onError={(e) => e.target.src = 'https://placehold.co/400x400?text=RAAHI'}
+                />
                 <p className="match-name">{personA.name}</p>
                 <p className="match-location">{personA.location}</p>
               </div>
@@ -66,7 +72,13 @@ export default function CompatibilityShowcase() {
               </div>
 
               <div className="match-person">
-                <img src={personB.image} alt={personB.name} />
+                <img
+                  src={personB.image}
+                  alt={personB.name}
+                  loading="lazy"
+                  style={{ aspectRatio: '1 / 1', objectFit: 'cover' }}
+                  onError={(e) => e.target.src = 'https://placehold.co/400x400?text=RAAHI'}
+                />
                 <p className="match-name">{personB.name}</p>
                 <p className="match-location">{personB.location}</p>
               </div>

@@ -47,7 +47,13 @@ export default function TripsShowcase() {
             {trips.map((trip) => (
               <article className="trip-card card" key={trip.title}>
                 <div className="trip-image">
-                  <img src={trip.image} alt={`${trip.title} in ${trip.location}`} loading="lazy" />
+                  <img
+                    src={trip.image}
+                    alt={`${trip.title} in ${trip.location}`}
+                    loading="lazy"
+                    style={{ aspectRatio: '5 / 4', objectFit: 'cover' }}
+                    onError={(e) => e.target.src = 'https://placehold.co/400x400?text=RAAHI'}
+                  />
                 </div>
                 <div className="trip-body">
                   <h3 className="trip-title">{trip.title}</h3>
@@ -62,7 +68,15 @@ export default function TripsShowcase() {
                   <div className="trip-footer">
                     <div className="trip-avatars">
                       {trip.avatars.map((src, i) => (
-                        <img src={src} alt="" key={i} className="trip-avatar" style={{ '--i': i }} />
+                        <img
+                          src={src}
+                          alt=""
+                          key={i}
+                          className="trip-avatar"
+                          loading="lazy"
+                          style={{ '--i': i, aspectRatio: '1 / 1', objectFit: 'cover' }}
+                          onError={(e) => e.target.src = 'https://placehold.co/400x400?text=RAAHI'}
+                        />
                       ))}
                     </div>
                     <span className="trip-rating">

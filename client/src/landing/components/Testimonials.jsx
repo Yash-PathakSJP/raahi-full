@@ -24,7 +24,13 @@ export default function Testimonials() {
               </div>
               <blockquote>&ldquo;{t.quote}&rdquo;</blockquote>
               <figcaption>
-                <img src={t.image} alt="" loading="lazy" />
+                <img
+                  src={t.image}
+                  alt=""
+                  loading="lazy"
+                  style={{ aspectRatio: '1 / 1', objectFit: 'cover' }}
+                  onError={(e) => e.target.src = 'https://placehold.co/400x400?text=RAAHI'}
+                />
                 <div>
                   <p className="testimonial-name">{t.name}</p>
                   <p className="testimonial-location">{t.location}</p>
