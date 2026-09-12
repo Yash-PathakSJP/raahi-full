@@ -89,8 +89,8 @@ npm run seed
 ```
 After seeding, log in with:
 ```
-Email: hello.yash@mail.com
-Password: Password123
+Email: test@gmail.com
+Password: test12345
 ```
 
 ### 4. Run the app
@@ -114,6 +114,16 @@ cd client && npm run dev
 - Health check: http://localhost:5000/api/health
 
 ---
+## 🔐 Demo Credentials
+
+Try the app instantly without signing up:
+
+| Field | Value |
+|---|---|
+| Email | `test@gmail.com` |
+| Password | `test12345` |
+
+> Live URL: https://raahi-full.vercel.app
 
 ## 📁 Project Structure
 
