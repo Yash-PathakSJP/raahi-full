@@ -183,6 +183,38 @@
   .hero-desc { max-width: none; }
 }
 
+@media (max-width: 640px) {
+  .hero {
+    padding: 48px 0 36px;
+  }
+
+  .hero-inner {
+    gap: 32px;
+  }
+
+  .raahi-landing .hero-title {
+    font-size: clamp(32px, 10vw, 44px);
+    overflow-wrap: anywhere;
+  }
+
+  .raahi-landing .hero-badge {
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .hero-visual {
+    min-height: 260px;
+  }
+
+  .hero-globe-wrap {
+    width: min(100%, 360px);
+  }
+
+  .hero-trusted {
+    align-items: flex-start;
+  }
+}
+
 @media (max-width: 520px) {
   .hero-stats { gap: 24px; }
   .hero-trusted-logos { gap: 14px; }

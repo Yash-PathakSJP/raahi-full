@@ -93,3 +93,14 @@
   }
   .steps-path { display: none; }
 }
+
+@media (max-width: 640px) {
+  .step {
+    min-width: 0;
+  }
+
+  .step-title,
+  .step-desc {
+    overflow-wrap: anywhere;
+  }
+}

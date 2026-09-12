@@ -39,3 +39,19 @@
 [data-theme='dark'] .theme-toggle-thumb {
   transform: translateX(20px);
 }
+
+@media (max-width: 640px) {
+  .theme-toggle-track {
+    width: 48px;
+    height: 28px;
+  }
+
+  .theme-toggle-thumb {
+    width: 20px;
+    height: 20px;
+  }
+
+  [data-theme='dark'] .theme-toggle-thumb {
+    transform: translateX(18px);
+  }
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ArrowRight, Sparkles, Map, Compass, CheckCircle2 } from 'lucide-react';
+import { Heart, ArrowRight, Sparkles, Map, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../utils/api';
 import toast from 'react-hot-toast';

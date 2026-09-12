@@ -73,3 +73,14 @@
   }
   .features-banner { height: 220px; }
 }
+
+@media (max-width: 640px) {
+  .feature-card {
+    min-width: 0;
+  }
+
+  .feature-title,
+  .feature-desc {
+    overflow-wrap: anywhere;
+  }
+}

@@ -137,6 +137,38 @@
   .discover-stack { order: -1; height: 340px; }
 }
 
+@media (max-width: 640px) {
+  .discover-stack {
+    height: 300px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .traveler-card {
+    width: min(150px, 46vw);
+  }
+
+  .traveler-card img {
+    height: clamp(170px, 52vw, 210px);
+  }
+
+  .traveler-card:nth-child(1) {
+    transform: translateX(-64px) rotate(-7deg) scale(0.9);
+  }
+
+  .traveler-card:nth-child(2) {
+    width: min(180px, 56vw);
+  }
+
+  .traveler-card:nth-child(2) img {
+    height: clamp(190px, 60vw, 240px);
+  }
+
+  .traveler-card:nth-child(3) {
+    transform: translateX(64px) rotate(7deg) scale(0.9);
+  }
+}
+
 @media (max-width: 480px) {
   .traveler-card { width: 150px; }
   .traveler-card img { height: 180px; }

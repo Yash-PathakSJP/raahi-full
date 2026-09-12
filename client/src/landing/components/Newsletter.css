@@ -122,3 +122,19 @@
   .newsletter-input-row { flex-direction: column; }
   .newsletter-input-row .btn { width: 100%; }
 }
+
+@media (max-width: 640px) {
+  .newsletter-band {
+    padding: 28px 16px;
+  }
+
+  .newsletter-form {
+    padding: 22px 16px;
+  }
+
+  .newsletter-form h3,
+  .newsletter-form > p,
+  .newsletter-message {
+    overflow-wrap: anywhere;
+  }
+}

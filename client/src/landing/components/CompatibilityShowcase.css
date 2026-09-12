@@ -154,8 +154,31 @@
   .compatibility-card-wrap { order: -1; }
 }
 
+@media (max-width: 640px) {
+  .match-card {
+    padding: 24px 16px;
+  }
+
+  .match-people {
+    gap: 8px;
+  }
+
+  .match-person {
+    min-width: 0;
+  }
+
+  .match-label {
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .match-reasons ul {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 480px) {
   .match-card { padding: 24px 18px; }
-  .match-reasons ul { grid-template-columns: 1fr; }
   .match-person img { width: 52px; height: 52px; }
 }

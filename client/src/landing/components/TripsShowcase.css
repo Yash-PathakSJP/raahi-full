@@ -151,3 +151,22 @@
   .trips-head { flex-direction: column; align-items: flex-start; }
   .trip-card { flex-basis: 270px; }
 }
+
+@media (max-width: 640px) {
+  .trips-head {
+    flex-wrap: wrap;
+  }
+
+  .trips-scroller {
+    max-width: 100%;
+  }
+
+  .trip-card {
+    flex-basis: min(270px, calc(100vw - 48px));
+    min-width: 0;
+  }
+
+  .trip-title {
+    overflow-wrap: anywhere;
+  }
+}

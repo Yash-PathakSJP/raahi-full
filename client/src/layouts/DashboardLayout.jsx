@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Topbar from '../components/Topbar';
@@ -20,6 +20,10 @@ export default function DashboardLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   const meta =
     PAGE_META[location.pathname] ||
     Object.entries(PAGE_META).find(([path]) => location.pathname.startsWith(path))?.[1] ||
@@ -31,7 +35,7 @@ export default function DashboardLayout() {
 
       <div className="flex min-w-0 flex-1 flex-col">
         <Topbar onMenuClick={() => setMobileOpen(true)} title={meta.title} subtitle={meta.subtitle} />
-        <main className="flex-1 overflow-y-auto scroll-thin p-4 sm:p-6">
+        <main className="min-w-0 flex-1 overflow-x-hidden overflow-y-auto scroll-thin p-4 sm:p-6">
           <Outlet />
         </main>
       </div>
