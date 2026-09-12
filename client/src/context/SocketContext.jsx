@@ -22,7 +22,7 @@ export function SocketProvider({ children }) {
       return;
     }
 
-    const socket = io('/', {
+    const socket = io(import.meta.env.VITE_API_URL || '/', {
       auth: { token },
       withCredentials: true,
       transports: ['websocket', 'polling'],
